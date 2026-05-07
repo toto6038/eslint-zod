@@ -1,0 +1,81 @@
+{
+  "name": "eslint-plugin-zod",
+  "version": "3.12.1",
+  "type": "module",
+  "description": "ESLint plugin that adds custom linting rules to enforce best practices when using Zod",
+  "engines": {
+    "node": "^20 || ^22 || >=24"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.cts",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "homepage": "https://github.com/marcalexiei/eslint-zod#readme",
+  "bugs": {
+    "url": "https://github.com/marcalexiei/eslint-zod/issues"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "oxlint",
+    "zod"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "Marco Pasqualetti @marcalexiei",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcalexiei/eslint-zod",
+    "directory": "plugins/eslint-plugin-zod"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "build:docs": "pnpm run build && eslint-doc-generator",
+    "lint:docs": "eslint-doc-generator --check",
+    "test": "vitest",
+    "test:dev": "vitest --typecheck=false"
+  },
+  "dependencies": {
+    "@eslint-zod/utils": "workspace:*",
+    "@typescript-eslint/utils": "catalog:deps",
+    "esquery": "^1.6.0"
+  },
+  "peerDependencies": {
+    "eslint": "^9 || ^10",
+    "oxlint": "^1.59.0",
+    "zod": "^4"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    },
+    "oxlint": {
+      "optional": true
+    },
+    "zod": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@marcalexiei/prettier-config": "catalog:dev",
+    "@types/esquery": "1.5.4",
+    "@typescript-eslint/rule-tester": "catalog:dev",
+    "dedent": "catalog:dev",
+    "eslint-doc-generator": "catalog:dev",
+    "prettier": "catalog:dev",
+    "tsdown": "catalog:dev",
+    "vitest": "catalog:dev"
+  }
+}

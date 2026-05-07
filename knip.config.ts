@@ -1,10 +1,26 @@
 import type { KnipConfig } from 'knip';
 
 export default {
-  entry: [
-    // 'src/index.ts',
-
-    // Executed by `eslint-doc-generator`
-    '.eslint-doc-generatorrc.js',
+  ignoreBinaries: [
+    // ignore github actions matrix syntax to test different eslint versions
+    /^eslint@/,
   ],
+  workspaces: {
+    '.': {
+      entry: [],
+    },
+    'plugins/eslint-plugin-zod': {
+      entry: ['.eslint-doc-generatorrc.js'],
+      // eslint is an optional peer dependency referenced only for `satisfies` type checks
+      // in src/index.ts — it doesn't need to be a devDependency
+      ignoreDependencies: ['eslint'],
+    },
+    'plugins/eslint-plugin-zod-mini': {
+      entry: ['.eslint-doc-generatorrc.js'],
+      // eslint is an optional peer dependency referenced only for `satisfies` type checks
+      // in src/index.ts — it doesn't need to be a devDependency
+      ignoreDependencies: ['eslint'],
+    },
+    'packages/utils': {},
+  },
 } satisfies KnipConfig;
