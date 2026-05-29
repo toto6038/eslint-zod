@@ -329,7 +329,7 @@ ruleTester.run(consistentSchemaVarName.name, consistentSchemaVarName, {
         const schema = z.string();
       `,
       options: [{ before: '$', after: 'Schema' }],
-      errors: [{ messageId: 'invalidName', data: { expected: '$schema' } }],
+      errors: [{ messageId: 'invalidName', data: { expected: '$Schema' } }],
       output: null,
     },
     {
@@ -339,7 +339,7 @@ ruleTester.run(consistentSchemaVarName.name, consistentSchemaVarName, {
         const foo = z.string();
       `,
       options: [{ before: 'Foo', after: 'Schema' }],
-      errors: [{ messageId: 'invalidName', data: { expected: 'fooSchema' } }],
+      errors: [{ messageId: 'invalidName', data: { expected: 'FooSchema' } }],
       output: null,
     },
     {

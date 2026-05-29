@@ -54,14 +54,17 @@ export function buildConsistentSchemaVarNameCreate(
           return;
         }
 
-        const validPrefix = !before || name.startsWith(before) || matchesBarePrefix;
-        const validSuffix = !after || name.endsWith(after) || matchesBareSuffix;
+        const validPrefix = !before || name.startsWith(before);
+        const validSuffix = !after || name.endsWith(after);
 
         if (validPrefix && validSuffix) {
           return;
         }
 
-        const expected = (validPrefix ? '' : before) + name + (validSuffix ? '' : after);
+        const expected =
+          matchesBarePrefix || matchesBareSuffix
+            ? before + after
+            : (validPrefix ? '' : before) + name + (validSuffix ? '' : after);
 
         context.report({
           node,
