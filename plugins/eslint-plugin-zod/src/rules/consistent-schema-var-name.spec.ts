@@ -21,7 +21,7 @@ ruleTester.run(consistentSchemaVarName.name, consistentSchemaVarName, {
         const schema = z.string();
         const Schema = z.string();
         const SCHEMA = z.string();
-      `
+      `,
     },
     {
       name: 'valid usage with multiple declarations',
