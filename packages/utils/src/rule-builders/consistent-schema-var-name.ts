@@ -45,8 +45,17 @@ export function buildConsistentSchemaVarNameCreate(
         }
 
         const { name } = node.id;
-        const validPrefix = !before || name.startsWith(before);
-        const validSuffix = !after || name.endsWith(after);
+
+        const nameLower = name.toLowerCase();
+        const matchesBarePrefix = Boolean(before) && nameLower === before.toLowerCase();
+        const matchesBareSuffix = Boolean(after) && nameLower === after.toLowerCase();
+
+        if ((!before && matchesBareSuffix) || (!after && matchesBarePrefix)) {
+          return;
+        }
+
+        const validPrefix = !before || name.startsWith(before) || matchesBarePrefix;
+        const validSuffix = !after || name.endsWith(after) || matchesBareSuffix;
 
         if (validPrefix && validSuffix) {
           return;
